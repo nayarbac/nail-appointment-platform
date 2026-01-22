@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Nuevo Estilo</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa; /* Fondo gris claro */
+            padding-top: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin-top: 50px;
+        }
+        h2, h3 {
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .btn-primary {
+            margin-top: 10px;
+        }
+        .pink-background {
+            background-color: #f3d9e4; /* Fondo rosa */
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-container {
+            background-color: #fff; /* Fondo blanco */
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .btn-regresar {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: #c74e88;
+            border-color: #c74e88;
+        }
+        .btn-regresar:hover {
+            background-color: #a04174;
+            border-color: #a04174;
+        }
+    </style>
+</head>
+<body class="pink-background">
+    <div class="container mt-5">
+        <h2 class="mb-4">Agregar Nuevo Estilo</h2>
+        <a href="javascript:history.back()" class="btn btn-regresar text-white">Regresar</a>
+        <div class="form-container">
+            <form action="procesar-registro.php" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="nombreEstilo">Nombre del Estilo:</label>
+                    <input type="text" class="form-control" id="nombreEstilo" name="nombreEstilo" required>
+                </div>
+                <div class="form-group">
+                    <label for="precio">Precio:</label>
+                    <input type="number" class="form-control" id="precio" name="precio" min="0" step="0.01" required>
+                </div>
+                <div class="form-group">
+                    <label for="imagenEstilo">Imagen del Estilo:</label>
+                    <input type="file" class="form-control-file" id="imagenEstilo" name="imagenEstilo" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Agregar Estilo</button>
+            </form>
+        </div>
+    </div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+

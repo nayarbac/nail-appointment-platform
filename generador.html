@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Generador de PDF</title>
+    <script src="jspdf.umd.min.js"></script>
+    <script>
+      // Asignar la función jsPDF al objeto global window
+      window.jsPDF = window.jspdf.jsPDF;
+    </script>
+  </head>
+  <body>
+    <h1>Generador de PDF</h1>
+
+    <button onclick="generarPDF()">Generar PDF</button>
+
+    <script>
+      function generarPDF() {
+        // Crear un nuevo objeto jsPDF
+        const doc = new window.jsPDF(); // Utilizando la función desde el objeto global
+
+        // Agregar contenido al PDF
+        doc.text(
+          "¡Hola, este es un PDF generado desde una página web!",
+          10,
+          10
+        );
+
+        // Guardar el PDF en el sistema del usuario con el nombre "documento.pdf"
+        doc.save("documento.pdf");
+      }
+    </script>
+  </body>
+</html>

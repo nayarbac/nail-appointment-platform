@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Administrador</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="servicios.css" />
+    <style>
+        .img-fluid {
+            width: 300px; 
+            height: auto; 
+        }
+
+        .boton-cerrar {
+            background-color: transparent;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 0;
+            margin: 0;
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            z-index: 1031; 
+        }
+
+        .icono-apagado {
+            width: 30px; 
+            height: 30px;
+            background-image: url('boton-de-apagado.png'); 
+            background-size: cover;
+        }
+
+        /* Cambiamos el color de la barra superior a un tono rosa suave */
+        .bg-femenino {
+            background-color: #E78EE5;
+        }
+
+        /* Cambiamos el color de la parte blanca del menú */
+        .sidebar.bg-white {
+            background-color: #FFCCCC !important; /* Color rosa suave */
+            border-right: 1px solid #f05eca; /* Borde derecho de color rosa oscuro */
+        }
+
+        /* Cambiamos el color del texto de la lista */
+        .nav-link {
+            color: #6E0B3E !important; /* Color de texto rosa oscuro */
+            border: none; /* Eliminamos el borde */
+        }
+
+        /* Cambiamos el color de fondo de los elementos de la lista */
+        .nav-item {
+            background-color: #FFCCCC; /* Color rosa suave */
+        }
+
+        /* Animación al pasar el cursor sobre los elementos del menú */
+        .nav-item:hover {
+            transform: scale(1.1);
+            transition: transform 0.3s ease;
+        }
+
+        /* Estilo para los botones centrados */
+        .centrado {
+            text-align: center;
+            margin-top: 20px; /* Espacio superior */
+        }
+
+        /* Estilo para los botones */
+        .boton {
+            margin: 5px; /* Espacio entre botones */
+            background-color: #FF99CC; /* Fondo rosado */
+            color: #6E0B3E; /* Texto rosa oscuro */
+            border-color: #6E0B3E; /* Borde rosa oscuro */
+        }
+
+        /* Estilo para la pila de botones */
+        .botones-pila {
+            position: absolute;
+            top: 50%; /* Centramos verticalmente */
+            left: 50%; /* Centramos horizontalmente */
+            transform: translate(-50%, -50%); /* Centramos completamente */
+            background-color: rgba(255, 204, 221, 0.6); /* Fondo rosa femenino, con opacidad */
+            padding: 20px; /* Espaciado interno */
+            border-radius: 10px; /* Bordes redondeados */
+        }
+    </style>
+</head>
+<body>
+    <!-- Cambiamos la clase de la barra superior a la nueva clase -->
+    <div class="bg-femenino fixed-top" style="height: 50px; width: 100%; z-index: 1020"></div>
+
+    <a href="fondo.html" class="boton-cerrar"> 
+        <div class="icono-apagado"></div>
+    </a>
+
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Agregamos las clases 'sidebar' y 'sidebar-cerrado' al menú izquierdo -->
+            <div class="col-lg-3 sidebar bg-white fixed-top" style="z-index: 1030">
+                <div class="logo">
+                    <img src="logo.png" width="150" height="auto" alt="Logo" />
+                </div>
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav nav-pills flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link" href="crudcliente.php">clientes</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="crudproducto.php">Producto</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="proveedor.php">Proveedor</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="crudestilos.php">Estilos</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="imagenes.html">Agregar estilos</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="productos.php">Agregar producto</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="crudventas.php">Ventas</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="crudcitas.php">Citas</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="crud detalleCar.php">Carrito</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <!-- Botones en forma de pila -->
+    <div class="botones-pila">
+        <a href="calcularingreso.html" class="btn btn-success boton">Calcular ingresos</a><br>
+        <a href="serv.php" class="btn btn-danger boton">Servicio mas solicitado</a><br>
+    </div>
+
+</body>
+</html>

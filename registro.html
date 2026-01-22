@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Usuario</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('salon.jpg');
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column; 
+        }
+
+        form {
+            background-color: rgba(255, 255, 255, 0.8); 
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+            width: 300px;
+            margin-top: 20px; 
+            position: relative; /* Necesario para posicionar el botón regresar */
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-top: 0; 
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        input[type="tel"] { /* Estilo para el campo de teléfono */
+            width: calc(100% - 10px);
+            padding: 8px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 0;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        /* Estilos para el mensaje de éxito */
+        .success-message {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 128, 0, 0.8);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            animation: fadeInOut 2s ease;
+            display: none; /* Inicialmente oculto */
+        }
+
+        @keyframes fadeInOut {
+            0%, 100% { opacity: 0; }
+            50% { opacity: 1; }
+        }
+
+        /* Estilo para el botón regresar */
+        .regresar-btn {
+            position: absolute;
+            top: 50%; /* Centrar verticalmente */
+            right: -350px; /* Mover más a la derecha */
+            transform: translateY(-50%);
+            background-color: #ff69b4; /* Color rosita */
+            color: white;
+            padding: 30px; /* Hacer el botón más grande */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+            font-size: 16px; /* Aumentar el tamaño de la fuente */
+        }
+
+        .regresar-btn:hover {
+            background-color: #ff85c1; /* Un tono más claro de rosita al pasar el cursor */
+        }
+    </style>
+</head>
+<body>
+    <form action="procesarregistro.php" method="POST">
+        <h1>Registro de Nuevo Usuario</h1>
+        <label for="nombre">Nombre:</label><br>
+        <input type="text" id="nombre" name="nombre" required><br><br>
+        
+        <label for="telefono">Teléfono:</label><br>
+        <input type="tel" id="telefono" name="telefono"><br><br>
+        
+        <label for="correo">Correo electrónico:</label><br>
+        <input type="email" id="correo" name="correo" required><br><br>
+
+        <label for="domicilio">Domicilio:</label><br>
+        <input type="text" id="domicilio" name="domicilio" required><br><br>
+
+        <label for="contrasena">Contraseña:</label><br>
+        <input type="password" id="contrasena" name="contrasena" required><br><br>
+        
+        <input type="submit" value="Registrarse">
+        
+        <a href="fondo.html" class="regresar-btn">Login</a> <!-- Enlace para el botón regresar -->
+    </form>
+
+    <!-- Elemento para mostrar el mensaje de éxito -->
+    <div id="successMessage" class="success-message">Usuario registrado correctamente.</div>
+
+    <script>
+        // Detectar si el registro fue exitoso
+        document.addEventListener("DOMContentLoaded", function() {
+            var successMessage = document.getElementById("successMessage");
+            var urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get("message") === "success") {
+                // Mostrar la animación de éxito
+                successMessage.style.display = "block";
+                // Ocultar el mensaje después de 3 segundos
+                setTimeout(function() {
+                    successMessage.style.display = "none";
+                }, 3000);
+            }
+        });
+    </script>
+</body>
+</html>

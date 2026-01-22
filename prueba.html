@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Total de Ventas</title>
+</head>
+<body>
+    <h1>Selecciona el mes y el año</h1>
+    <form id="formulario">
+        <label for="mes">Mes:</label>
+        <select name="mes" id="mes">
+            <option value="01">Enero</option>
+            <option value="02">Febrero</option>
+            <option value="03">Marzo</option>
+            <option value="04">Abril</option>
+            <option value="05">Mayo</option>
+            <option value="06">Junio</option>
+            <option value="07">Julio</option>
+            <option value="08">Agosto</option>
+            <option value="09">Septiembre</option>
+            <option value="10">Octubre</option>
+            <option value="11">Noviembre</option>
+            <option value="12">Diciembre</option>
+        </select>
+        
+            <!-- Agrega opciones para los demás meses -->
+        </select>
+        <label for="anio">Año:</label>
+        <select name="anio" id="anio">
+            <option value="2024">2024</option>
+            <!-- Agrega opciones para otros años si es necesario -->
+        </select>
+        <button type="submit">Calcular Total</button>
+    </form>
+
+    <div id="resultado"></div>
+
+    <script>
+        document.getElementById('formulario').addEventListener('submit', function(e) {
+            e.preventDefault();
+            var formData = new FormData(this);
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        document.getElementById('resultado').innerHTML = xhr.responseText;
+                    } else {
+                        console.error('Error en la solicitud: ' + xhr.status);
+                    }
+                }
+            };
+            xhr.open('POST', 'calcular_total_ventas.php', true);
+            xhr.send(formData);
+        });
+    </script>
+</body>
+</html>

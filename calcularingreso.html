@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Ingresos</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"> <!-- Agregar enlace al archivo CSS de Flatpickr -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #fcd3d3; /* Cambiar el color de fondo a rosa */
+        }
+        
+        .container {
+            text-align: center;
+            position: relative;
+        }
+        
+        form {
+            margin-bottom: 20px;
+        }
+        
+        .flatpickr-input {
+            padding: 8px;
+            margin: 5px;
+            border-radius: 5px; /* Agregar bordes redondeados */
+            border: 1px solid #ff7aa8; /* Cambiar el color del borde */
+        }
+        
+        button {
+            padding: 8px 20px;
+            background-color: #ff7aa8; /* Cambiar el color del botón a rosa */
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px; /* Agregar bordes redondeados */
+        }
+        
+        button:hover {
+            background-color: #ff4d88; /* Cambiar el color de hover del botón */
+        }
+        
+        #result {
+            font-size: 20px;
+            color: #ff7aa8; /* Cambiar el color del texto */
+        }
+
+        /* Estilos para el botón de regresar */
+        .btn-back {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: #ff7aa8; /* Color rosa */
+            color: #ffffff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .btn-back:hover {
+            background-color: #ff4d88; /* Color rosa más oscuro al pasar el mouse */
+        }
+    </style>
+</head>
+<body>
+    <a href="javascript:history.back()" class="btn-back">Regresar</a>
+
+    <div class="container">
+        <h1 style="color: #ff4d88;">Calculadora de Ingresos</h1> <!-- Cambiar el color del título -->
+        <form id="dateForm" action="calcular_ingresos.php" method="POST">
+            <label for="startDate">Fecha de inicio:</label>
+            <input type="text" id="startDate" name="startDate" class="flatpickr-input" required> <!-- Cambiar el tipo de entrada a texto -->
+            <label for="endDate">Fecha de fin:</label>
+            <input type="text" id="endDate" name="endDate" class="flatpickr-input" required> <!-- Cambiar el tipo de entrada a texto -->
+            <button type="submit">Calcular</button>
+        </form>
+        <div id="result"></div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script> <!-- Agregar el script de Flatpickr -->
+    <script>
+        flatpickr("#startDate", {
+            dateFormat: "Y-m-d" // Establecer el formato de fecha
+        });
+        flatpickr("#endDate", {
+            dateFormat: "Y-m-d" // Establecer el formato de fecha
+        });
+        
+        document.getElementById('dateForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Evita que el formulario se envíe normalmente
+            
+            var form = this;
+            var formData = new FormData(form);
+            
+            // Realizar la solicitud AJAX al servidor
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', form.action, true);
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    document.getElementById('result').textContent = 'Total de ingresos: $' + xhr.responseText;
+                } else {
+                    document.getElementById('result').textContent = 'Error al calcular los ingresos';
+                }
+            };
+            xhr.onerror = function() {
+                document.getElementById('result').textContent = 'Error al calcular los ingresos';
+            };
+            xhr.send(formData);
+        });
+    </script>
+</body>
+</html>
